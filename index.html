@@ -84,6 +84,25 @@
       opacity: 0.95;
       text-shadow: 0 0 8px rgba(57, 255, 20, 0.7), 0 2px 6px #000;
     }
+    /* contact link, bottom-left */
+    .contact {
+      position: fixed;
+      left: 20px;
+      bottom: 16px;
+      z-index: 3;
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      color: var(--neon);
+      text-shadow: 0 0 8px rgba(57, 255, 20, 0.7), 0 2px 6px #000;
+    }
+    .contact .owners { margin-bottom: 0.35rem; opacity: 0.85; }
+    .contact a {
+      color: var(--neon);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(57, 255, 20, 0.6);
+    }
+    .contact a:hover, .contact a:focus {
+      text-shadow: 0 0 6px var(--neon), 0 0 16px var(--neon);
+    }
     @keyframes blink { 50% { opacity: 0; } }
     @media (prefers-reduced-motion: reduce) {
       h1 .cursor { animation: none; }
@@ -91,8 +110,12 @@
   </style>
 </head>
 <body>
-  <div class="bg" aria-hidden="true"><img src="monkey-bg.png" alt=""></div>
+  <div class="bg" aria-hidden="true"><img src="monkey-bg.png?v=2" alt=""></div>
   <h1>&gt; devmonkee<span class="cursor"></span></h1>
   <p>Local delivery centers in Bulgaria for U.S. MSPs.</p>
+  <div class="contact">
+    <div class="owners">Owners: Yuriy Holevich &amp; Georgi Rangelov</div>
+    <div>Contact us at <a href="mailto:info@devmonkee.com">info@devmonkee.com</a></div>
+  </div>
 </body>
 </html>
