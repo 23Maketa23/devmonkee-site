@@ -1,12 +1,72 @@
-   <!doctype html>
-   <html lang="en">
-   <head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <title>devmonkee</title>
-   </head>
-   <body>
-     <h1>devmonkee</h1>
-     <p>Local delivery centers in Bulgaria for MSPs.</p>
-   </body>
-   </html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>devmonkee</title>
+  <meta name="description" content="Local delivery centers in Bulgaria for U.S. MSPs.">
+  <meta name="theme-color" content="#050807">
+  <style>
+    :root {
+      --bg: #050807;
+      --neon: #39ff14;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--neon);
+      font-family: "Courier New", Consolas, Menlo, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 16px;
+      overflow: hidden;
+    }
+    /* subtle scanlines */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0,
+        rgba(0, 0, 0, 0) 2px,
+        rgba(0, 0, 0, 0.25) 3px
+      );
+    }
+    h1 {
+      font-size: clamp(2.5rem, 9vw, 6rem);
+      letter-spacing: 0.08em;
+      text-shadow: 0 0 6px var(--neon), 0 0 18px var(--neon), 0 0 42px rgba(57, 255, 20, 0.6);
+    }
+    h1 .cursor {
+      display: inline-block;
+      width: 0.5em;
+      height: 0.9em;
+      margin-left: 0.1em;
+      background: var(--neon);
+      box-shadow: 0 0 12px var(--neon);
+      vertical-align: -0.05em;
+      animation: blink 1s steps(1) infinite;
+    }
+    p {
+      margin-top: 1.25rem;
+      font-size: clamp(1rem, 2.6vw, 1.5rem);
+      opacity: 0.9;
+      text-shadow: 0 0 8px rgba(57, 255, 20, 0.7);
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      h1 .cursor { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <h1>&gt; devmonkee<span class="cursor"></span></h1>
+  <p>Local delivery centers in Bulgaria for MSPs.</p>
+</body>
+</html>
