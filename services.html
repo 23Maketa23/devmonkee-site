@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>devmonkee</title>
+  <meta name="description" content="Local delivery centers in Bulgaria for U.S. MSPs.">
+  <meta name="theme-color" content="#050807">
+  <style>
+    :root {
+      --bg: #050807;
+      --neon: #39ff14;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--neon);
+      font-family: "Courier New", Consolas, Menlo, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 16px;
+      overflow: hidden;
+    }
+    /* watermark background picture */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .bg img {
+      height: 94vh;
+      max-width: 96vw;
+      object-fit: contain;
+      opacity: 0.14;              /* watermark strength: lower = fainter */
+    }
+    /* dark vignette keeps the text readable */
+    .bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(5,8,7,0) 0%, rgba(5,8,7,0.5) 100%);
+    }
+    /* subtle scanlines */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0,
+        rgba(0, 0, 0, 0) 2px,
+        rgba(0, 0, 0, 0.25) 3px
+      );
+    }
+    h1, p { position: relative; z-index: 1; }
+    h1 {
+      font-size: clamp(2.5rem, 9vw, 6rem);
+      letter-spacing: 0.08em;
+      text-shadow: 0 0 6px var(--neon), 0 0 18px var(--neon), 0 0 42px rgba(57, 255, 20, 0.6);
+    }
+    h1 .cursor {
+      display: inline-block;
+      width: 0.5em;
+      height: 0.9em;
+      margin-left: 0.1em;
+      background: var(--neon);
+      box-shadow: 0 0 12px var(--neon);
+      vertical-align: -0.05em;
+      animation: blink 1s steps(1) infinite;
+    }
+    p {
+      margin-top: 1.25rem;
+      font-size: clamp(1rem, 2.6vw, 1.5rem);
+      opacity: 0.95;
+      text-shadow: 0 0 8px rgba(57, 255, 20, 0.7), 0 2px 6px #000;
+    }
+    /* contact link, bottom-left */
+    .contact {
+      position: fixed;
+      left: 20px;
+      bottom: 16px;
+      z-index: 3;
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      color: var(--neon);
+      text-shadow: 0 0 8px rgba(57, 255, 20, 0.7), 0 2px 6px #000;
+    }
+    .contact .owners { margin-bottom: 0.35rem; opacity: 0.85; }
+    .contact a {
+      color: var(--neon);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(57, 255, 20, 0.6);
+    }
+    .contact a:hover, .contact a:focus {
+      text-shadow: 0 0 6px var(--neon), 0 0 16px var(--neon);
+    }
+    /* top navigation */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 3;
+      display: flex; justify-content: flex-end; gap: clamp(14px, 3vw, 32px);
+      padding: 18px 24px; font-size: clamp(0.85rem, 2vw, 1.05rem);
+    }
+    nav a { color: var(--neon); text-decoration: none; opacity: 0.75; text-shadow: 0 0 8px rgba(57,255,20,.6); padding-bottom: 2px; }
+    nav a:hover, nav a.active { opacity: 1; border-bottom: 1px solid var(--neon); }
+    body.page { justify-content: flex-start; overflow-y: auto; padding-top: 110px; padding-bottom: 110px; }
+    main { position: relative; z-index: 1; max-width: 960px; width: 100%; }
+    main h1 { font-size: clamp(2rem, 6vw, 3.5rem); }
+    main .lead { margin: 1rem auto 2.5rem; max-width: 640px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; text-align: left; }
+    .card { border: 1px solid rgba(57,255,20,.45); background: rgba(5,8,7,.72); padding: 22px;
+            box-shadow: 0 0 14px rgba(57,255,20,.18), inset 0 0 20px rgba(57,255,20,.05); }
+    .card h2 { font-size: 1.15rem; margin-bottom: .6rem; text-shadow: 0 0 8px rgba(57,255,20,.7); }
+    .card p { margin: 0; font-size: .95rem; line-height: 1.5; opacity: .85; text-shadow: none; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      h1 .cursor { animation: none; }
+    }
+  </style>
+</head>
+<body class="page">
+  <nav><a href="index.html" class="">Home</a><a href="services.html" class="active">Services</a></nav>
+  <div class="bg" aria-hidden="true"><img src="monkey-bg.png?v=2" alt=""></div>
+  <main>
+    <h1>&gt; services<span class="cursor"></span></h1>
+    <p class="lead">Stop multitasking, start multiplying your results. We handle the critical support services so you can put all your energy into running your core business.</p>
+    <div class="cards">
+      <div class="card"><h2>01 / Set up</h2><p>Company registration, office space and local legal setup.</p></div>
+      <div class="card"><h2>02 / Hire</h2><p>Recruiting and onboarding engineers and support staff.</p></div>
+      <div class="card"><h2>03 / Run</h2><p>IT infrastructure, automations, payroll and day-to-day operations.</p></div>
+    </div>
+  </main>
+  <div class="contact">
+    <div class="owners">Owners: Yuriy Holevich &amp; Georgi Rangelov</div>
+    <div>Contact: <a href="mailto:info@devmonkee.com">info@devmonkee.com</a></div>
+  </div>
+</body>
+</html>
